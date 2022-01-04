@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MvcOtelProjeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TblDurum">
+          <Key>
+            <PropertyRef Name="DurumID" />
+          </Key>
+          <Property Name="DurumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DurumAD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblEkibimiz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unvan" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gorsel" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MvcOtelProje.dbo.TblHakkimda' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblHakkimda">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hakkimda1" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Hakkimda2" Type="nchar" MaxLength="1000" />
+          <Property Name="Hakkimda3" Type="nchar" MaxLength="1000" />
+          <Property Name="Hakkimda4" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Tblİletisim">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aciklama" Type="varchar" MaxLength="1000" />
+          <Property Name="Kordinat" Type="varchar" MaxLength="1000" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="30" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TblMesaj">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gönderen" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="Konu" Type="varchar" MaxLength="50" />
+          <Property Name="Mesaj" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="TblMesaj2">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gonderen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Alici" Type="nvarchar" MaxLength="100" />
+          <Property Name="Konu" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mesaj" Type="nvarchar(max)" />
+          <Property Name="Tarih" Type="date" />
+        </EntityType>
+        <EntityType Name="TblMisafir">
+          <Key>
+            <PropertyRef Name="MisafirID" />
+          </Key>
+          <Property Name="MisafirID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="TC" Type="char" MaxLength="11" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="200" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="KimlikFoto1" Type="nvarchar" MaxLength="100" />
+          <Property Name="KimlikFoto2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ulke" Type="int" />
+          <Property Name="Durum" Type="int" />
+        </EntityType>
+        <EntityType Name="TblOda">
+          <Key>
+            <PropertyRef Name="OdaID" />
+          </Key>
+          <Property Name="OdaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdaNo" Type="int" />
+          <Property Name="Kat" Type="int" />
+          <Property Name="Kapasite" Type="int" />
+          <Property Name="Açıklama" Type="varchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nchar" MaxLength="10" />
+          <Property Name="Durum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblRezarvasyon">
+          <Key>
+            <PropertyRef Name="RezervasyonID" />
+          </Key>
+          <Property Name="RezervasyonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Misafir" Type="int" />
+          <Property Name="GirisTarihi" Type="date" />
+          <Property Name="ÇıkısTarihi" Type="date" />
+          <Property Name="Kisi" Type="char" MaxLength="1" />
+          <Property Name="Oda" Type="int" />
+          <Property Name="RezarvasyonAdSoyad" Type="nvarchar" MaxLength="30" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+          <Property Name="Durum" Type="int" />
+        </EntityType>
+        <EntityType Name="TblYeniKayit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Şifre" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_TblMisafir_TblDurum">
+          <End Role="TblDurum" Type="Self.TblDurum" Multiplicity="0..1" />
+          <End Role="TblMisafir" Type="Self.TblMisafir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDurum">
+              <PropertyRef Name="DurumID" />
+            </Principal>
+            <Dependent Role="TblMisafir">
+              <PropertyRef Name="Durum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblRezarvasyon_TblMisafir">
+          <End Role="TblMisafir" Type="Self.TblMisafir" Multiplicity="0..1" />
+          <End Role="TblRezarvasyon" Type="Self.TblRezarvasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMisafir">
+              <PropertyRef Name="MisafirID" />
+            </Principal>
+            <Dependent Role="TblRezarvasyon">
+              <PropertyRef Name="Misafir" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblRezarvasyon_TblOda">
+          <End Role="TblOda" Type="Self.TblOda" Multiplicity="0..1" />
+          <End Role="TblRezarvasyon" Type="Self.TblRezarvasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOda">
+              <PropertyRef Name="OdaID" />
+            </Principal>
+            <Dependent Role="TblRezarvasyon">
+              <PropertyRef Name="Oda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MvcOtelProjeModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblDurum" EntityType="Self.TblDurum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblEkibimiz" EntityType="Self.TblEkibimiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tblİletisim" EntityType="Self.Tblİletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMesaj" EntityType="Self.TblMesaj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMesaj2" EntityType="Self.TblMesaj2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMisafir" EntityType="Self.TblMisafir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblOda" EntityType="Self.TblOda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRezarvasyon" EntityType="Self.TblRezarvasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblYeniKayit" EntityType="Self.TblYeniKayit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblHakkimda" EntityType="Self.TblHakkimda" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblHakkimda].[ID] AS [ID], 
+    [TblHakkimda].[Hakkimda1] AS [Hakkimda1], 
+    [TblHakkimda].[Hakkimda2] AS [Hakkimda2], 
+    [TblHakkimda].[Hakkimda3] AS [Hakkimda3], 
+    [TblHakkimda].[Hakkimda4] AS [Hakkimda4]
+    FROM [dbo].[TblHakkimda] AS [TblHakkimda]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_TblMisafir_TblDurum" Association="Self.FK_TblMisafir_TblDurum">
+            <End Role="TblDurum" EntitySet="TblDurum" />
+            <End Role="TblMisafir" EntitySet="TblMisafir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblRezarvasyon_TblMisafir" Association="Self.FK_TblRezarvasyon_TblMisafir">
+            <End Role="TblMisafir" EntitySet="TblMisafir" />
+            <End Role="TblRezarvasyon" EntitySet="TblRezarvasyon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblRezarvasyon_TblOda" Association="Self.FK_TblRezarvasyon_TblOda">
+            <End Role="TblOda" EntitySet="TblOda" />
+            <End Role="TblRezarvasyon" EntitySet="TblRezarvasyon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MvcOtelProjeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tblİletisim">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Kordinat" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblMesaj">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gönderen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mesaj" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TblOda">
+          <Key>
+            <PropertyRef Name="OdaID" />
+          </Key>
+          <Property Name="OdaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdaNo" Type="Int32" />
+          <Property Name="Kat" Type="Int32" />
+          <Property Name="Kapasite" Type="Int32" />
+          <Property Name="Açıklama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TblRezarvasyon" Relationship="MvcOtelProjeModel.FK_TblRezarvasyon_TblOda" FromRole="TblOda" ToRole="TblRezarvasyon" />
+        </EntityType>
+        <EntityType Name="TblHakkimda">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hakkimda1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Hakkimda2" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Hakkimda3" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Hakkimda4" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="MvcOtelProjeEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tblİletisim" EntityType="Self.Tblİletisim" />
+          <EntitySet Name="TblMesaj" EntityType="Self.TblMesaj" />
+          <EntitySet Name="TblOda" EntityType="Self.TblOda" />
+          <EntitySet Name="TblHakkimda" EntityType="Self.TblHakkimda" />
+          <EntitySet Name="TblYeniKayit" EntityType="MvcOtelProjeModel.TblYeniKayit" />
+          <EntitySet Name="sysdiagrams" EntityType="MvcOtelProjeModel.sysdiagrams" />
+          <EntitySet Name="TblDurum" EntityType="MvcOtelProjeModel.TblDurum" />
+          <EntitySet Name="TblMisafir" EntityType="MvcOtelProjeModel.TblMisafir" />
+          <EntitySet Name="TblRezarvasyon" EntityType="MvcOtelProjeModel.TblRezarvasyon" />
+          <AssociationSet Name="FK_TblMisafir_TblDurum" Association="MvcOtelProjeModel.FK_TblMisafir_TblDurum">
+            <End Role="TblDurum" EntitySet="TblDurum" />
+            <End Role="TblMisafir" EntitySet="TblMisafir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblRezarvasyon_TblMisafir" Association="MvcOtelProjeModel.FK_TblRezarvasyon_TblMisafir">
+            <End Role="TblMisafir" EntitySet="TblMisafir" />
+            <End Role="TblRezarvasyon" EntitySet="TblRezarvasyon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblRezarvasyon_TblOda" Association="MvcOtelProjeModel.FK_TblRezarvasyon_TblOda">
+            <End Role="TblOda" EntitySet="TblOda" />
+            <End Role="TblRezarvasyon" EntitySet="TblRezarvasyon" />
+          </AssociationSet>
+          <EntitySet Name="TblEkibimiz" EntityType="MvcOtelProjeModel.TblEkibimiz" />
+          <EntitySet Name="TblMesaj2" EntityType="MvcOtelProjeModel.TblMesaj2" />
+        </EntityContainer>
+        <EntityType Name="TblYeniKayit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Şifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TblDurum">
+          <Key>
+            <PropertyRef Name="DurumID" />
+          </Key>
+          <Property Name="DurumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DurumAD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblMisafir" Relationship="MvcOtelProjeModel.FK_TblMisafir_TblDurum" FromRole="TblDurum" ToRole="TblMisafir" />
+        </EntityType>
+        <EntityType Name="TblMisafir">
+          <Key>
+            <PropertyRef Name="MisafirID" />
+          </Key>
+          <Property Name="MisafirID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KimlikFoto1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KimlikFoto2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ulke" Type="Int32" />
+          <Property Name="Durum" Type="Int32" />
+          <NavigationProperty Name="TblDurum" Relationship="MvcOtelProjeModel.FK_TblMisafir_TblDurum" FromRole="TblMisafir" ToRole="TblDurum" />
+          <NavigationProperty Name="TblRezarvasyon" Relationship="MvcOtelProjeModel.FK_TblRezarvasyon_TblMisafir" FromRole="TblMisafir" ToRole="TblRezarvasyon" />
+        </EntityType>
+        <EntityType Name="TblRezarvasyon">
+          <Key>
+            <PropertyRef Name="RezervasyonID" />
+          </Key>
+          <Property Name="RezervasyonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Misafir" Type="Int32" />
+          <Property Name="GirisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="ÇıkısTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Kisi" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Oda" Type="Int32" />
+          <Property Name="RezarvasyonAdSoyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="Int32" />
+          <NavigationProperty Name="TblMisafir" Relationship="MvcOtelProjeModel.FK_TblRezarvasyon_TblMisafir" FromRole="TblRezarvasyon" ToRole="TblMisafir" />
+          <NavigationProperty Name="TblOda" Relationship="MvcOtelProjeModel.FK_TblRezarvasyon_TblOda" FromRole="TblRezarvasyon" ToRole="TblOda" />
+        </EntityType>
+        <Association Name="FK_TblMisafir_TblDurum">
+          <End Type="MvcOtelProjeModel.TblDurum" Role="TblDurum" Multiplicity="0..1" />
+          <End Type="MvcOtelProjeModel.TblMisafir" Role="TblMisafir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDurum">
+              <PropertyRef Name="DurumID" />
+            </Principal>
+            <Dependent Role="TblMisafir">
+              <PropertyRef Name="Durum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblRezarvasyon_TblMisafir">
+          <End Type="MvcOtelProjeModel.TblMisafir" Role="TblMisafir" Multiplicity="0..1" />
+          <End Type="MvcOtelProjeModel.TblRezarvasyon" Role="TblRezarvasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblMisafir">
+              <PropertyRef Name="MisafirID" />
+            </Principal>
+            <Dependent Role="TblRezarvasyon">
+              <PropertyRef Name="Misafir" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblRezarvasyon_TblOda">
+          <End Type="MvcOtelProjeModel.TblOda" Role="TblOda" Multiplicity="0..1" />
+          <End Type="MvcOtelProjeModel.TblRezarvasyon" Role="TblRezarvasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOda">
+              <PropertyRef Name="OdaID" />
+            </Principal>
+            <Dependent Role="TblRezarvasyon">
+              <PropertyRef Name="Oda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblEkibimiz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gorsel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblMesaj2">
+          <Key>
+            <PropertyRef Name="MesajID" />
+          </Key>
+          <Property Name="MesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gonderen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Alici" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Konu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MvcOtelProjeModelStoreContainer" CdmEntityContainer="MvcOtelProjeEntities3">
+          <EntitySetMapping Name="Tblİletisim">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.Tblİletisim">
+              <MappingFragment StoreEntitySet="Tblİletisim">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Kordinat" ColumnName="Kordinat" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMesaj">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblMesaj">
+              <MappingFragment StoreEntitySet="TblMesaj">
+                <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+                <ScalarProperty Name="Gönderen" ColumnName="Gönderen" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOda">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblOda">
+              <MappingFragment StoreEntitySet="TblOda">
+                <ScalarProperty Name="OdaID" ColumnName="OdaID" />
+                <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+                <ScalarProperty Name="Kat" ColumnName="Kat" />
+                <ScalarProperty Name="Kapasite" ColumnName="Kapasite" />
+                <ScalarProperty Name="Açıklama" ColumnName="Açıklama" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblHakkimda">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblHakkimda">
+              <MappingFragment StoreEntitySet="TblHakkimda">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Hakkimda1" ColumnName="Hakkimda1" />
+                <ScalarProperty Name="Hakkimda2" ColumnName="Hakkimda2" />
+                <ScalarProperty Name="Hakkimda3" ColumnName="Hakkimda3" />
+                <ScalarProperty Name="Hakkimda4" ColumnName="Hakkimda4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblYeniKayit">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblYeniKayit">
+              <MappingFragment StoreEntitySet="TblYeniKayit">
+                <ScalarProperty Name="Şifre" ColumnName="Şifre" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblDurum">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblDurum">
+              <MappingFragment StoreEntitySet="TblDurum">
+                <ScalarProperty Name="DurumAD" ColumnName="DurumAD" />
+                <ScalarProperty Name="DurumID" ColumnName="DurumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMisafir">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblMisafir">
+              <MappingFragment StoreEntitySet="TblMisafir">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Ulke" ColumnName="Ulke" />
+                <ScalarProperty Name="KimlikFoto2" ColumnName="KimlikFoto2" />
+                <ScalarProperty Name="KimlikFoto1" ColumnName="KimlikFoto1" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="MisafirID" ColumnName="MisafirID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRezarvasyon">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblRezarvasyon">
+              <MappingFragment StoreEntitySet="TblRezarvasyon">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="RezarvasyonAdSoyad" ColumnName="RezarvasyonAdSoyad" />
+                <ScalarProperty Name="Oda" ColumnName="Oda" />
+                <ScalarProperty Name="Kisi" ColumnName="Kisi" />
+                <ScalarProperty Name="ÇıkısTarihi" ColumnName="ÇıkısTarihi" />
+                <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
+                <ScalarProperty Name="Misafir" ColumnName="Misafir" />
+                <ScalarProperty Name="RezervasyonID" ColumnName="RezervasyonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblEkibimiz">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblEkibimiz">
+              <MappingFragment StoreEntitySet="TblEkibimiz">
+                <ScalarProperty Name="Gorsel" ColumnName="Gorsel" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMesaj2">
+            <EntityTypeMapping TypeName="MvcOtelProjeModel.TblMesaj2">
+              <MappingFragment StoreEntitySet="TblMesaj2">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Alici" ColumnName="Alici" />
+                <ScalarProperty Name="Gonderen" ColumnName="Gonderen" />
+                <ScalarProperty Name="MesajID" ColumnName="MesajID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
